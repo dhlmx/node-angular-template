@@ -14,6 +14,27 @@ export class HeaderComponent {
 
   menuItems: MenuItem[] = [
     {
+      icon: PrimeIcons.LIST,
+      label: 'Members',
+      items: [
+        {
+          icon: PrimeIcons.SIGN_IN,
+          label: 'List',
+          routerLink: `/members`
+        },
+        {
+          icon: PrimeIcons.SYNC,
+          label: 'Update',
+          routerLink: `/members/update`
+        },
+        {
+          icon: PrimeIcons.SIGN_OUT,
+          label: 'Delete',
+          routerLink: `/members/delete`
+        }
+      ]
+    },
+    {
       icon: PrimeIcons.ID_CARD,
       label: 'Session',
       items: [
