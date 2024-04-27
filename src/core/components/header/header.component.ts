@@ -18,17 +18,22 @@ export class HeaderComponent {
       label: 'Members',
       items: [
         {
-          icon: PrimeIcons.SIGN_IN,
+          icon: PrimeIcons.USERS,
           label: 'List',
           routerLink: `/members`
         },
         {
-          icon: PrimeIcons.SYNC,
+          icon: PrimeIcons.USER_PLUS,
+          label: 'Create',
+          routerLink: `/members/create`
+        },
+        {
+          icon: PrimeIcons.USER_EDIT,
           label: 'Update',
           routerLink: `/members/update`
         },
         {
-          icon: PrimeIcons.SIGN_OUT,
+          icon: PrimeIcons.USER_MINUS,
           label: 'Delete',
           routerLink: `/members/delete`
         }
