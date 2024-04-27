@@ -14,7 +14,7 @@ export class HeaderComponent {
 
   menuItems: MenuItem[] = [
     {
-      icon: PrimeIcons.LIST,
+      icon: PrimeIcons.USERS,
       label: 'Members',
       items: [
         {
