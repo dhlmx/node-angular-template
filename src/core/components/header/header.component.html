@@ -1,0 +1,20 @@
+<header>
+  <p-menubar [model]="menuItems">
+    <ng-template pTemplate="start">
+      <img
+        src="../../../assets/images/logos/coyote-transparency-white-v3.svg"
+        alt="Template"
+        style="max-width: 100px;">
+    </ng-template>
+    <ng-template pTemplate="end">
+      <div>
+        <button type="button" pButton title="Create chapter" class="p-button-outlined p-button-info">
+          <em class="pi pi-language"></em>
+        </button>
+        <button type="button" pButton title="Print list of chapters" class="p-button-outlined p-button-success">
+          <em class="pi pi-print"></em>
+        </button>
+      </div>
+    </ng-template>
+  </p-menubar>
+</header>

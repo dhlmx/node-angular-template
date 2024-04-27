@@ -1,1 +1,15 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  font-family: var(--font-family);
+}
+
+footer {
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  line-height: 20px;
+}
+
+footer a {
+  display: flex;
+  align-items: center;
+}
