@@ -1,0 +1,101 @@
+<app-message-modal
+  [visible]="appService.process.processingMode"
+  [message]="appService.process.message">
+</app-message-modal>
+
+<p-panel id="htmlContent">
+  <ng-template pTemplate="header">
+    <div><span class="pi pi-fw pi-users"></span>&nbsp;Members | List</div>
+  </ng-template>
+
+  <ng-template pTemplate="icons">
+    <div>
+      <button type="button" pButton (click)="onCreate()" title="Create expression" class="p-button-outlined p-button-info">
+        <em class="pi pi-plus-circle"></em>
+      </button>
+      <button type="button" pButton (click)="onPrint()" title="Print list of expressions" class="p-button-outlined p-button-success">
+        <em class="pi pi-print"></em>
+      </button>
+    </div>
+  </ng-template>
+
+  <ng-template pTemplate="body">
+    <div class="grid bg-gray-900">
+      <div class="col-12">
+      </div>
+    </div>
+    <ng-container>
+      <div class="grid bg-gray-900">
+        <div class="col-12">
+          <p-table #dt
+            [value]="list"
+            dataKey="id"
+            [paginator]="false"
+            [rows]="50"
+            [showCurrentPageReport]="true"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} members"
+            [rowsPerPageOptions]="[10, 25, 50, 100]"
+            [filterDelay]="100"
+            [globalFilterFields]="[]"
+            styleClass="p-datatable-gridlines p-datatable-striped">
+
+            <ng-template pTemplate="caption">
+              <div class="table-header">
+                <div class="grid">
+                  <div class="col-12 md:col-4"><span class="pi pi-sort-alpha-down"></span>&nbsp;Members</div>
+                  <div class="col-12 md:col-8 text-right">
+                    <!-- <span class="p-input-icon-right ml-auto">
+                      <i class="pi pi-search"></i>
+                      <input type="text" pInputText
+                        [formControl]="search"
+                        (input)="dt.filterGlobal(search.value, 'contains')"
+                        placeholder="Global search" />
+                    </span> -->
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+
+            <ng-template pTemplate="header">
+              <tr>
+                <th id="userName" pSortableColumn="userName" class="width-15 text-center"><p-sortIcon field="userName"></p-sortIcon>&nbsp;Username</th>
+                <th id="name" pSortableColumn="name" class="width-30 text-center"><p-sortIcon field="name"></p-sortIcon>&nbsp;Name</th>
+                <th id="email" pSortableColumn="email" class="width-20 text-center"><p-sortIcon field="email"></p-sortIcon>&nbsp;Email</th>
+                <th id="password" class="width-20 text-center">&nbsp;Password</th>
+                <th id="actions" class="width-15 text-center">Actions</th>
+              </tr>
+            </ng-template>
+
+            <ng-template pTemplate="body" let-item>
+              <tr style="font-size: small; vertical-align: top;">
+                <td><p>{{item.userName}}</p></td>
+                <td><p>{{item.name}}</p></td>
+                <td><p>{{item.email}}</p></td>
+                <td><p>{{item.password}}</p></td>
+                <td class="text-center">
+                  <button type="button" pButton title="Read expression" (click)="onRead(item._id)" class="p-button-outlined p-button-warning"><em class="pi pi-eye"></em></button>
+                  <button type="button" pButton title="Update expression" (click)="onUpdate(item._id)" class="p-button-outlined p-button-success"><em class="pi pi-pencil"></em></button>
+                  <button type="button" pButton title="Delete expression" (click)="onDelete(item._id)" class="p-button-outlined p-button-danger"><em class="pi pi-trash"></em></button>
+                </td>
+              </tr>
+            </ng-template>
+
+            <ng-template pTemplate="emptymessage">
+              <tr>
+                  <td colspan="5">Members not found!</td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+      </div>
+    </ng-container>
+  </ng-template>
+
+  <ng-template pTemplate="footer">
+    <div class="grid">
+      <div class="col-12 text-center">
+        <!-- <button type="button" label="Calculate" pButton title="Calculate" [disabled]="form.invalid" (click)="onClickCalculate()" class="p-button-outlined p-button-info"></button> -->
+      </div>
+    </div>
+  </ng-template>
+</p-panel>

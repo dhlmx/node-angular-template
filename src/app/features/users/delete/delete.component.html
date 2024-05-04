@@ -1,0 +1,76 @@
+<app-message-modal
+  [visible]="appService.process.processingMode"
+  [message]="appService.process.message">
+</app-message-modal>
+
+<p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000" rejectButtonStyleClass="p-button-text"></p-confirmDialog>
+<p-toast></p-toast>
+
+<p-panel id="htmlContent">
+  <ng-template pTemplate="header">
+    <div><span class="pi pi-fw pi-user"></span>&nbsp;Usuario | Eliminar</div>
+  </ng-template>
+
+  <ng-template pTemplate="icons">
+    <div>
+      <button type="button" pButton title="List users" (click)="onList()" class="p-button-outlined p-button-success">
+        <em class="pi pi-list"></em>
+      </button>
+      <button type="button" pButton title="Create user" (click)="onCreate()" class="p-button-outlined p-button-info">
+        <em class="pi pi-plus-circle"></em>
+      </button>
+      <button type="button" pButton title="Update user" (click)="onUpdate(user._id)" class="p-button-outlined p-button-warning">
+        <em class="pi pi-pencil"></em>
+      </button>
+      <button type="button" pButton (click)="onPrint()" title="Print user" class="p-button-outlined p-button-success">
+        <em class="pi pi-print"></em>
+      </button>
+    </div>
+  </ng-template>
+
+  <ng-template pTemplate="body">
+    <form form="form">
+      <div class="grid bg-gray-900">
+        <div class="col-12 md:col-6">
+          <label for="_id"><span class="pi pi-barcode"></span>&nbsp;Id<span class="required">*</span></label>
+          <input type="text" inputId="_id" placeholder="UUID" [formControl]="controls._id" pInputText class="w-full" />
+        </div>
+        <div class="col-12 md:col-6">
+          <label for="userName"><span class="pi pi-user-edit"></span>&nbsp;Username<span class="required">*</span></label>
+          <input type="text" inputId="userName" placeholder="Username" [formControl]="controls.userName" pInputText class="w-full" />
+        </div>
+        <div class="col-12">
+          <label for="name"><span class="pi pi-address-book"></span>&nbsp;Name<span class="required">*</span></label>
+          <input type="text" inputId="name" placeholder="Name" [formControl]="controls.name" pInputText class="w-full" />
+        </div>
+        <div class="col-12 md:col-6">
+          <label for="email"><span class="pi pi-at"></span>&nbsp;Email</label>
+          <input type="email" inputId="email" placeholder="a@b.com" [formControl]="controls.email" pInputText class="w-full" />
+        </div>
+        <div class="col-12 md:col-6">
+          <label for="password"><span class="pi pi-asterisk"></span>&nbsp;Password</label>
+          <input type="password" inputId="password" placeholder="************" [formControl]="controls.password" pInputText class="w-full" />
+        </div>
+      </div>
+    </form>
+    <p><span class="required">*</span>Datos requeridos.</p>
+  </ng-template>
+
+  <ng-template pTemplate="footer">
+    <div class="grid">
+      @if (appService.process.isSuccessful === false && appService.response.status === 406) {
+        <div class="col-12 md:col-offset-3 md:col-6">
+          <app-validation-errors
+            [validationTitle]="appService.response.message"
+            [errors]="appService.response.data">
+          </app-validation-errors>
+        </div>
+      }
+      <div class="col-12 text-center">
+        <button type="button" label="Eliminar" pButton title="Eliminar" [disabled]="form.invalid" (click)="onSave()" class="p-button-outlined p-button-info">
+          <em class="pi pi-trash">&nbsp;</em>
+        </button>
+      </div>
+    </div>
+  </ng-template>
+</p-panel>

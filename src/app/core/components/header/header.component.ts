@@ -3,6 +3,11 @@ import { PrimeIcons, MenuItem } from 'primeng/api';
 import { MenubarModule } from 'primeng/menubar';
 import { ButtonModule } from 'primeng/button';
 
+
+// Enums && Constants
+import { CRUD, DB } from '../../constants/db';
+const db = DB.users;
+
 @Component({
   selector: 'app-header',
   standalone: true,
@@ -15,28 +20,28 @@ export class HeaderComponent {
   menuItems: MenuItem[] = [
     {
       icon: PrimeIcons.USERS,
-      label: 'Members',
+      label: 'Users',
       items: [
         {
           icon: PrimeIcons.USERS,
           label: 'List',
-          routerLink: `/members`
+          routerLink: `/${db.table}/${CRUD.list}`
         },
         {
           icon: PrimeIcons.USER_PLUS,
           label: 'Create',
-          routerLink: `/members/create`
-        },
+          routerLink: `/${db.table}/${CRUD.create}`
+        }/*,
         {
           icon: PrimeIcons.USER_EDIT,
           label: 'Update',
-          routerLink: `/members/update`
+          routerLink: `/${db.table}/${CRUD.update}`
         },
         {
           icon: PrimeIcons.USER_MINUS,
           label: 'Delete',
-          routerLink: `/members/delete`
-        }
+          routerLink: `/${db.table}/${CRUD.delete}`
+        }*/
       ]
     },
     {
